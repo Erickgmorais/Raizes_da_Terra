@@ -54,7 +54,7 @@ class Institution {
         `);
     }
     showInstitution() {
-        (0, Colors_1.yellow)(`
+        return `
 ========================================
                INSTITUTION
 ========================================
@@ -64,7 +64,7 @@ class Institution {
   PEOPLE SERVED  : ${this.numberPeopleServed}
 
 ========================================
-    `);
+    `;
     }
 }
 exports.Institution = Institution;

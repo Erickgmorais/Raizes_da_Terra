@@ -5,6 +5,7 @@ import { CreateProducer } from "./Class/CreateProducer";
 import { Food } from "./Class/Food"
 import { Institution } from "./Class/Institution";
 import { Producer } from "./Class/Producer"
+import { makeDonation } from "./Donate/Donate";
 
 const arrayProducer: Producer[] = [];
 const arrayFood: Food[] = []
@@ -137,15 +138,8 @@ while(!interrupt) {
                 if (arrayInstitution.length === 0) {
                     throw new Error('No institutions registered');
                 }
-
-                arrayInstitution.forEach((e, i) => {
-                    yellow('\n' + (i + 1) + ' - ');
-                    e.showInstitution();
-                });
-
-                const index = readIndex('Choose one Institution: ', arrayInstitution.length);
-
-                arrayInstitution[index].receiveFood(arrayFood);
+                
+                makeDonation(arrayFood, arrayInstitution)
                 white('\nFood delivered successfully!');
                 
                 stop();

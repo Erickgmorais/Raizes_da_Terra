@@ -2,6 +2,7 @@ import { Food } from "./Food";
 import { cyan, red, yellow } from "../Auxiliares/Colors";
 import { ask } from "../Auxiliares/Auxiliares";
 import { clear } from "node:console";
+import { stop } from "../Auxiliares/Auxiliares";
 
 export class Institution {
     protected name: string
@@ -64,8 +65,8 @@ export class Institution {
         `);
     }
 
-    public showInstitution(): void {
-        yellow(`
+    public showInstitution(): string {
+        return `
 ========================================
                INSTITUTION
 ========================================
@@ -75,6 +76,6 @@ export class Institution {
   PEOPLE SERVED  : ${this.numberPeopleServed}
 
 ========================================
-    `);
+    `;
     }
 }

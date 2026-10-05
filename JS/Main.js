@@ -6,6 +6,7 @@ const Colors_1 = require("./Auxiliares/Colors");
 const CreateProducer_1 = require("./Class/CreateProducer");
 const Food_1 = require("./Class/Food");
 const Institution_1 = require("./Class/Institution");
+const Doacao_1 = require("./Doacao/Doacao");
 const arrayProducer = [];
 const arrayFood = [];
 const arrayInstitution = [];
@@ -48,7 +49,7 @@ while (!interrupt) {
                 const categoryFood = Auxiliares_1.ask.question('Insert your category: ');
                 const quantityKilos = Number(Auxiliares_1.ask.question('Insert quantity kilos: '));
                 arrayProducer.forEach((e, i) => {
-                    (0, Colors_1.green)('\n' + (i + 1) + ' - ' + e.getName());
+                    (0, Colors_1.yellow)('\n' + (i + 1) + ' - ' + e.getName());
                 });
                 const chooseProducer = Number(Auxiliares_1.ask.question('Insert the producer responsible: '));
                 if (chooseProducer < 0 || chooseProducer > arrayProducer.length) {
@@ -75,7 +76,7 @@ while (!interrupt) {
                     throw new Error('No producers registered');
                 }
                 arrayProducer.forEach((e, i) => {
-                    (0, Colors_1.green)(`\n${i + 1} -`);
+                    (0, Colors_1.yellow)(`\n${i + 1} -`);
                     e.showProducer();
                 });
                 (0, Auxiliares_1.stop)();
@@ -86,7 +87,7 @@ while (!interrupt) {
                     throw new Error('No food registered');
                 }
                 arrayFood.forEach((e, i) => {
-                    (0, Colors_1.green)(`\n${i + 1} -`);
+                    (0, Colors_1.yellow)(`\n${i + 1} -`);
                     e.showFood();
                 });
                 (0, Auxiliares_1.stop)();
@@ -97,7 +98,7 @@ while (!interrupt) {
                     throw new Error('No institutions registered');
                 }
                 arrayInstitution.forEach((e, i) => {
-                    (0, Colors_1.green)(`\n${i + 1} -`);
+                    (0, Colors_1.yellow)(`\n${i + 1} -`);
                     e.showInstitution();
                 });
                 (0, Auxiliares_1.stop)();
@@ -107,12 +108,7 @@ while (!interrupt) {
                 if (arrayInstitution.length === 0) {
                     throw new Error('No institutions registered');
                 }
-                arrayInstitution.forEach((e, i) => {
-                    (0, Colors_1.green)('\n' + (i + 1) + ' - ');
-                    e.showInstitution();
-                });
-                const index = (0, Auxiliares_1.readIndex)('Choose one Institution: ', arrayInstitution.length);
-                arrayInstitution[index].receiveFood(arrayFood);
+                (0, Doacao_1.makeDonation)(arrayFood, arrayInstitution);
                 (0, Colors_1.white)('\nFood delivered successfully!');
                 (0, Auxiliares_1.stop)();
                 break;

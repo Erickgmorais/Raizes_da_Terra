@@ -2,6 +2,7 @@ import { ask } from "../Auxiliares/Auxiliares";
 import { purple, red, yellow } from "../Auxiliares/Colors";
 import { Food } from "../Class/Food";
 import { Institution } from "../Class/Institution";
+import { stop } from "../Auxiliares/Auxiliares";
 
 let interrupt: boolean = false
 
@@ -22,6 +23,7 @@ export const makeDonation = (food: Food[], instituion: Institution[]): void => {
         }
         stop();
         instituion[chooseInstitution].receiveFood(food);
+        return;
 
     }
 
