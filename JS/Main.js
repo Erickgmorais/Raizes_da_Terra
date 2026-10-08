@@ -7,6 +7,7 @@ const CreateProducer_1 = require("./Class/CreateProducer");
 const Food_1 = require("./Class/Food");
 const Institution_1 = require("./Class/Institution");
 const Donate_1 = require("./Donate/Donate");
+const Enum_1 = require("./Auxiliares/Enum");
 const arrayProducer = [];
 const arrayFood = [];
 const arrayInstitution = [];
@@ -45,21 +46,70 @@ while (!interrupt) {
                 break;
             case '2':
                 (0, node_console_1.clear)();
-                const nameFood = Auxiliares_1.ask.question('Insert name food: ');
-                const categoryFood = Auxiliares_1.ask.question('Insert your category: ');
-                const quantityKilos = Number(Auxiliares_1.ask.question('Insert quantity kilos: '));
-                arrayProducer.forEach((e, i) => {
-                    (0, Colors_1.yellow)('\n' + (i + 1) + ' - ' + e.getName());
-                });
-                const chooseProducer = Number(Auxiliares_1.ask.question('Insert the producer responsible: '));
-                if (chooseProducer < 0 || chooseProducer > arrayProducer.length) {
-                    throw new Error(' !! Invalid option !!');
+                const nameFood = Auxiliares_1.ask.question('Enter the name of the food: ');
+                (0, Enum_1.showType)();
+                const categoryFood = Auxiliares_1.ask.question('Enter the category number: ');
+                switch (categoryFood) {
+                    case '1':
+                        const quantityKilos = Number(Auxiliares_1.ask.question('Enter the quantity kilos'));
+                        arrayProducer.forEach((e, i) => {
+                            (0, Colors_1.yellow)('\n' + (i + 1) + ' - ' + e.getName());
+                        });
+                        const chooseProducer = Number(Auxiliares_1.ask.question('Enter the producer number: '));
+                        if (chooseProducer < 0 || chooseProducer > arrayProducer.length) {
+                            throw new Error(' !! INVALID OPTION !!');
+                        }
+                        const createFood = new Food_1.Food(nameFood, Enum_1.typeCategory.CITRUS_FRUITS, quantityKilos, arrayProducer[chooseProducer]);
+                        (0, Colors_1.white)('\nFood insert sucessfully! ');
+                        arrayFood.push(createFood);
+                        (0, Auxiliares_1.stop)();
+                        break;
+                    case '2':
+                        const quantityKilos2 = Number(Auxiliares_1.ask.question('Enter the quantity kilos'));
+                        if (arrayProducer.length === 0) {
+                            throw new Error(' !! INVALID OPTION !!');
+                        }
+                        arrayProducer.forEach((e, i) => {
+                            (0, Colors_1.yellow)('\n' + (i + 1) + ' - ' + e.getName());
+                        });
+                        const chooseProducer2 = Number(Auxiliares_1.ask.question('Enter the producer number: '));
+                        if (chooseProducer2 < 0 || chooseProducer2 > arrayProducer.length) {
+                            throw new Error(' !! INVALID OPTION !!');
+                        }
+                        const createFood2 = new Food_1.Food(nameFood, Enum_1.typeCategory.BERRIES, quantityKilos2, arrayProducer[chooseProducer2]);
+                        (0, Colors_1.white)('\nFood insert sucessfully! ');
+                        arrayFood.push(createFood2);
+                        (0, Auxiliares_1.stop)();
+                        break;
+                    case '3':
+                        const quantityKilos3 = Number(Auxiliares_1.ask.question('Enter the quantity kilos'));
+                        arrayProducer.forEach((e, i) => {
+                            (0, Colors_1.yellow)('\n' + (i + 1) + ' - ' + e.getName());
+                        });
+                        const chooseProducer3 = Number(Auxiliares_1.ask.question('Enter the producer number: '));
+                        if (chooseProducer3 < 0 || chooseProducer3 > arrayProducer.length) {
+                            throw new Error(' !! INVALID OPTION !!');
+                        }
+                        const createFood3 = new Food_1.Food(nameFood, Enum_1.typeCategory.TROPICAL_FRUITS, quantityKilos3, arrayProducer[chooseProducer3]);
+                        (0, Colors_1.white)('\nFood insert sucessfully! ');
+                        arrayFood.push(createFood3);
+                        (0, Auxiliares_1.stop)();
+                        break;
+                    case '4':
+                        const quantityKilos4 = Number(Auxiliares_1.ask.question('Enter the quantity kilos'));
+                        arrayProducer.forEach((e, i) => {
+                            (0, Colors_1.yellow)('\n' + (i + 1) + ' - ' + e.getName());
+                        });
+                        const chooseProducer4 = Number(Auxiliares_1.ask.question('Enter the producer number: '));
+                        if (chooseProducer4 < 0 || chooseProducer4 > arrayProducer.length) {
+                            throw new Error(' !! INVALID OPTION !!');
+                        }
+                        const createFood4 = new Food_1.Food(nameFood, Enum_1.typeCategory.DRUPES, quantityKilos4, arrayProducer[chooseProducer4]);
+                        (0, Colors_1.white)('\nFood insert sucessfully! ');
+                        arrayFood.push(createFood4);
+                        (0, Auxiliares_1.stop)();
+                        break;
                 }
-                const createFood = new Food_1.Food(nameFood, categoryFood, quantityKilos, arrayProducer[chooseProducer]);
-                (0, Colors_1.white)('\nFood insert sucessfully! ');
-                arrayFood.push(createFood);
-                (0, Auxiliares_1.stop)();
-                break;
             case '3':
                 (0, node_console_1.clear)();
                 const nameInstitution = Auxiliares_1.ask.question('Insert name Institution: ');
@@ -139,3 +189,6 @@ while (!interrupt) {
         }
     }
 }
+/*
+* Tenho que fazer o usuário escolher quantos kilos pretende doar.
+*/ 
