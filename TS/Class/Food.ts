@@ -1,15 +1,16 @@
 import { Producer } from "./Producer";
 import { Donatable } from "../Interface/Donatable";
 import { green, red, yellow } from "../Auxiliares/Colors";
+import { typeCategory } from "../Auxiliares/Enum";
 
 //Poderia fazer com enum as categorias.
 export class Food implements Donatable{
     protected name: string;
-    protected category: string;
+    protected category: typeCategory;
     protected quantityKilos: number;
     protected responsibleProducer: Producer;
 
-    constructor(name: string, category: string, quantityKilos: number, responsibleProducer: Producer) {
+    constructor(name: string, category: typeCategory, quantityKilos: number, responsibleProducer: Producer) {
         this.name = name
         this.category = category;
         if(quantityKilos <= 0) {

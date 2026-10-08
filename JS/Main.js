@@ -6,7 +6,7 @@ const Colors_1 = require("./Auxiliares/Colors");
 const CreateProducer_1 = require("./Class/CreateProducer");
 const Food_1 = require("./Class/Food");
 const Institution_1 = require("./Class/Institution");
-const Doacao_1 = require("./Doacao/Doacao");
+const Donate_1 = require("./Donate/Donate");
 const arrayProducer = [];
 const arrayFood = [];
 const arrayInstitution = [];
@@ -108,7 +108,7 @@ while (!interrupt) {
                 if (arrayInstitution.length === 0) {
                     throw new Error('No institutions registered');
                 }
-                (0, Doacao_1.makeDonation)(arrayFood, arrayInstitution);
+                (0, Donate_1.makeDonation)(arrayFood, arrayInstitution);
                 (0, Colors_1.white)('\nFood delivered successfully!');
                 (0, Auxiliares_1.stop)();
                 break;
