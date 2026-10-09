@@ -52,6 +52,9 @@ while (!interrupt) {
                 switch (categoryFood) {
                     case '1':
                         const quantityKilos = Number(Auxiliares_1.ask.question('Enter the quantity kilos'));
+                        if (arrayProducer.length === 0) {
+                            throw new Error(' !! INVALID OPTION !!');
+                        }
                         arrayProducer.forEach((e, i) => {
                             (0, Colors_1.yellow)('\n' + (i + 1) + ' - ' + e.getName());
                         });
@@ -65,7 +68,7 @@ while (!interrupt) {
                         (0, Auxiliares_1.stop)();
                         break;
                     case '2':
-                        const quantityKilos2 = Number(Auxiliares_1.ask.question('Enter the quantity kilos'));
+                        const quantityKilos2 = Number(Auxiliares_1.ask.question('Enter the quantity kilos: '));
                         if (arrayProducer.length === 0) {
                             throw new Error(' !! INVALID OPTION !!');
                         }
@@ -83,6 +86,9 @@ while (!interrupt) {
                         break;
                     case '3':
                         const quantityKilos3 = Number(Auxiliares_1.ask.question('Enter the quantity kilos'));
+                        if (arrayProducer.length === 0) {
+                            throw new Error(' !! INVALID OPTION !!');
+                        }
                         arrayProducer.forEach((e, i) => {
                             (0, Colors_1.yellow)('\n' + (i + 1) + ' - ' + e.getName());
                         });
@@ -97,6 +103,9 @@ while (!interrupt) {
                         break;
                     case '4':
                         const quantityKilos4 = Number(Auxiliares_1.ask.question('Enter the quantity kilos'));
+                        if (arrayProducer.length === 0) {
+                            throw new Error(' !! INVALID OPTION !!');
+                        }
                         arrayProducer.forEach((e, i) => {
                             (0, Colors_1.yellow)('\n' + (i + 1) + ' - ' + e.getName());
                         });
@@ -165,15 +174,13 @@ while (!interrupt) {
             case '0':
                 (0, node_console_1.clear)();
                 (0, Colors_1.white)(`
--------------------------------------------------------------------------------------- 
-            ████  ███  ███ █   █ ████   ███    
-            █ ░░░░█ ░░█  █░░██  █░█░░░█ █ ░░█   
-             ███░░█████░ █░░█░█ █░█░░░█░█░ ░█░  
-              ░░█ █░░░█░░█░░█░░██░█░░ █░█░░ █░░ 
-            ████░░█░░░█░███░█░░ █░████ ░░███ ░░ 
-             ░░░░ ░░░  ░░░░░ ░░  ░░░░░░ ░ ░░░ ░ 
-              ░░░░  ░   ░ ░░░ ░   ░ ░░░░   ░░░ ...
--------------------------------------------------------------------------------------- 
+                █████ █   █ ███ █████   
+                █░░░░░ █ █ ░ █░░ ░█░░░  
+                ████░░░ █ ░ ░█░░░ █░░░░ 
+                █░░░░  █ █ ░ █░░  █░░   
+                █████░█ ░ █ ███░  █░░   
+                 ░░░░░ ░ ░ ░ ░░░   ░░   
+                  ░░░░░ ░   ░ ░░░   ░ ...
                 `);
                 interrupt = true;
                 break;

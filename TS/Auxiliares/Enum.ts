@@ -1,22 +1,27 @@
 import { yellow } from "./Colors"
 
 export enum typeCategory {
-    CITRUS_FRUITS,
-    BERRIES,
-    TROPICAL_FRUITS,
-    DRUPES
+    GRAINS,
+    VEGETALES,
+    FRUITS,
+    PULSES_OR_LEGUMES,
+    NUTS,
+    OTHERS
+
 }
 
 export const showType = (): void => {
     yellow(` 
-    ╔══════════════════════════════════════╗
-    ║           CATEGORY TYPES             ║
-    ╠══════════════════════════════════════╣
-    ║  Choose one type !                   ║
-    ╠══════════════════════════════════════╣
-    ║  1 - Citrus Fruits                   ║
-    ║  2 - Berries                         ║
-    ║  3 - Tropical Fruits                 ║
-    ║  4 - Drupes                          ║
-    ╚══════════════════════════════════════╝`);
+╔══════════════════════════════════════╗
+║           CATEGORY TYPES             ║
+╠══════════════════════════════════════╣
+║  Choose one type !                   ║
+╠══════════════════════════════════════╣
+║  1 - GRAINS                          ║
+║  2 - VEGETABLES                      ║
+║  3 - FRUITS                          ║
+║  4 - PULSE/LEGUMES                   ║
+║  5 - NUTS                            ║
+║  6 - OTHERS                          ║
+╚══════════════════════════════════════╝`);
 }

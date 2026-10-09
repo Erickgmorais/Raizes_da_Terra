@@ -1,0 +1,23 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.registerProducer = void 0;
+const console_1 = require("console");
+const CreateProducer_1 = require("../Class/CreateProducer");
+const Auxiliares_1 = require("./Auxiliares");
+const Colors_1 = require("./Colors");
+const arrayProducer = [];
+const arrayFood = [];
+const arrayInstitution = [];
+let createdProducer;
+const registerProducer = () => {
+    (0, console_1.clear)();
+    const name = Auxiliares_1.ask.question('Insert name: ');
+    const identify = Auxiliares_1.ask.question('Insert your identify (document): ');
+    const quantityFood = Auxiliares_1.ask.question('Insert your quantity produced food: ');
+    createdProducer = new CreateProducer_1.CreateProducer(name, identify, quantityFood);
+    createdProducer.showProducer();
+    (0, Colors_1.white)('\nProducer insert sucessfully! ');
+    arrayProducer.push(createdProducer);
+    stop();
+};
+exports.registerProducer = registerProducer;

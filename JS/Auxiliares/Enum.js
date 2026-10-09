@@ -11,15 +11,15 @@ var typeCategory;
 })(typeCategory || (exports.typeCategory = typeCategory = {}));
 const showType = () => {
     (0, Colors_1.yellow)(` 
-    ╔══════════════════════════════════════╗
-    ║           CATEGORY TYPES             ║
-    ╠══════════════════════════════════════╣
-    ║  Choose one type !                   ║
-    ╠══════════════════════════════════════╣
-    ║  1 - Citrus Fruits                   ║
-    ║  2 - Berries                         ║
-    ║  3 - Tropical Fruits                 ║
-    ║  4 - Drupes                          ║
-    ╚══════════════════════════════════════╝`);
+╔══════════════════════════════════════╗
+║           CATEGORY TYPES             ║
+╠══════════════════════════════════════╣
+║  Choose one type !                   ║
+╠══════════════════════════════════════╣
+║  1 - Citrus Fruits                   ║
+║  2 - Berries                         ║
+║  3 - Tropical Fruits                 ║
+║  4 - Drupes                          ║
+╚══════════════════════════════════════╝`);
 };
 exports.showType = showType;

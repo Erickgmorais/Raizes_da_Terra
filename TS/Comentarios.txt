@@ -1,0 +1,8 @@
+Usei IA para facilitar a categoria da classe FOOD 
+Com RECORD digo para o código que chave é string, ou seja, '1', '2'... e o valor será typeCategory
+ou seja 'citrus_fruits'...  
+
+
+//A TERMINAR: 
+Parte de categoria.
+Colocar a opcao de quantidade de produtos para a doação.
