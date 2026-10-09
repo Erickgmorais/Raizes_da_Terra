@@ -10,7 +10,7 @@ class Institution {
         this.name = name;
         this.addres = addres;
         if (numberPeopleServed < 0) {
-            throw new Error('Invalid number! ');
+            throw new Error(' !! INVALID NUMBER !!');
         }
         this.numberPeopleServed = numberPeopleServed;
     }
@@ -22,7 +22,7 @@ class Institution {
     }
     receiveFood(food) {
         if (food.length === 0) {
-            (0, Colors_1.red)('No food available! ');
+            (0, Colors_1.red)(' !! NO FOOD AVAILABLE !! ');
             return;
         }
         food.forEach((e, i) => {
@@ -30,7 +30,7 @@ class Institution {
         });
         const choose = Number(Auxiliares_1.ask.question('Choose your donate: '));
         if (choose <= 0 || choose > food.length) {
-            (0, Colors_1.red)('Invalid option! ');
+            (0, Colors_1.red)(' !! INVALID OPTION !! ');
             return;
         }
         const donatedFood = food[choose - 1];

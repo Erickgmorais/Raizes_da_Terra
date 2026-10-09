@@ -14,7 +14,7 @@ export class Institution {
         this.name = name;
         this.addres = addres;
         if(numberPeopleServed < 0) {
-            throw new Error('Invalid number! ');
+            throw new Error(' !! INVALID NUMBER !!');
         }
         this.numberPeopleServed = numberPeopleServed;
     }
@@ -29,7 +29,7 @@ export class Institution {
 
     public receiveFood(food: Food[]): void {
         if (food.length === 0) {
-            red('No food available! ');
+            red(' !! NO FOOD AVAILABLE !! ');
             return;
         }
 
@@ -40,7 +40,7 @@ export class Institution {
         const choose: number = Number(ask.question('Choose your donate: '));
 
         if (choose <= 0 || choose > food.length) {
-            red('Invalid option! ');
+            red(' !! INVALID OPTION !! ');
             return;
         }
 

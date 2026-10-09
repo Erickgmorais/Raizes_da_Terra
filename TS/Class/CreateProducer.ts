@@ -6,8 +6,8 @@ export class CreateProducer extends Producer {
         super(name, identify, producedFoods)
     }
 
-    public showProducer(): void {
-        blue(`
+    public showProducer(): string {
+        return `
 ========================================
               PRODUCER
 ========================================
@@ -17,6 +17,6 @@ export class CreateProducer extends Producer {
   FOODS  : ${this.producedFoods}
 
 ========================================
-    `);
+    `;
     }
 }

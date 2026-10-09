@@ -1,13 +1,13 @@
 import { clear } from "node:console";
 import { ask,  stop } from "./Auxiliares/Auxiliares";
-import { cyan, red, white, yellow } from "./Auxiliares/Colors";
+import { blue, cyan, red, white, yellow } from "./Auxiliares/Colors";
 import { CreateProducer } from "./Class/CreateProducer";
 import { Food } from "./Class/Food"
 import { Institution } from "./Class/Institution";
 import { Producer } from "./Class/Producer"
 import { makeDonation } from "./Donate/Donate";
 import { showType, typeCategory } from "./Auxiliares/Enum";
-import { registerProducer } from "./Auxiliares/Option";
+
 
 const arrayProducer: Producer[] = [];
 const arrayFood: Food[] = []
@@ -47,9 +47,9 @@ while(!interrupt) {
                 if(identify.length < maxCharacters || identify.length > 11) {
                     throw new Error(' !! INVALID CHARACTERS !!');
                 }
-                const quantityFood: number = ask.question('Insert your quantity produced food: ');
+                const quantityProduced: number = ask.question('Insert your quantity produced food: ');
 
-                createdProducer = new CreateProducer(name, identify, quantityFood);
+                createdProducer = new CreateProducer(name, identify, quantityProduced);
                 createdProducer.showProducer();
                 white('\nProducer insert sucessfully! ');
                 arrayProducer.push(createdProducer);
@@ -61,7 +61,7 @@ while(!interrupt) {
                 clear();
                 const nameFood: string = ask.question('Enter the name of the food: ');
                 showType();
-                const category: Record<string, typeCategory> = {
+                const categoryFood: Record<string, typeCategory> = {
                     '1': typeCategory.GRAINS,
                     '2': typeCategory.VEGETALES,
                     '3': typeCategory.FRUITS,
@@ -69,12 +69,24 @@ while(!interrupt) {
                     '5': typeCategory.NUTS,
                     '6': typeCategory.OTHERS                   
                 }
-                const categoryFood: string = ask.question('Enter the category number: ');
+                const optionCategory: string = ask.question('Enter the category number: ');
 
                 if(categoryFood.length < 0 || categoryFood.length > 7) {
-                    
+                    throw new Error(' !! INVALID CATEGORY !!');
                 } 
-                  
+                const quantityFood: number = Number(ask.question('Enter the quantity kilos: '));
+                
+                if(arrayProducer.length < 0) {
+                    throw new Error(' !! NO PRODUCER !!');
+                }
+                arrayProducer.forEach((e, i) => {
+                    blue('\n' + (i + 1) + ' - ' + e.showProducer());
+                });
+                const chooseProducer: number = Number(ask.question('Choose an producer: '));
+
+                const foodCreated: Food = new Food(nameFood, categoryFood[optionCategory], quantityFood, arrayProducer[chooseProducer]);
+                arrayFood.push(foodCreated);
+                break;
 
             case '3': 
                 clear();
@@ -93,12 +105,11 @@ while(!interrupt) {
                 clear();
 
                 if (arrayProducer.length === 0) {
-                    throw new Error(' NO PRODUCER REGISTRED ');
+                    throw new Error(' !! NO PRODUCER REGISTRED !! ');
                 }
 
                 arrayProducer.forEach((e, i) => {
-                    yellow(`\n${i + 1} -`);
-                    e.showProducer();
+                    yellow('\n' + (i + 1) + ' - ' + e.showProducer());
                 });
                 
                 stop();
@@ -108,12 +119,11 @@ while(!interrupt) {
                 clear();
 
                 if (arrayFood.length === 0) {
-                    throw new Error(' NO FOOD REGISTRED ');
+                    throw new Error(' !! NO FOOD REGISTRED !! ');
                 }
 
                 arrayFood.forEach((e, i) => {
-                    yellow(`\n${i + 1} -`);
-                    e.showFood();
+                    yellow('\n' + (i + 1) + ' - ' + e.showFood());
                 });
                 
                 stop();
@@ -123,12 +133,11 @@ while(!interrupt) {
                 clear();
 
                 if (arrayInstitution.length === 0) {
-                    throw new Error(' NO INSTITUTION REGISTRED ');
+                    throw new Error(' !! NO INSTITUTION REGISTRED !! ');
                 }
 
                 arrayInstitution.forEach((e, i) => {
-                    yellow(`\n${i + 1} -`);
-                    e.showInstitution();
+                    yellow('\n' + (i + 1) + ' - ' + e.showInstitution());
                 });
                 stop();
                 break;
@@ -137,7 +146,7 @@ while(!interrupt) {
                 clear();
 
                 if (arrayInstitution.length === 0) {
-                    throw new Error(' NO INSTITUTION REGISTRED ');
+                    throw new Error(' !! NO INSTITUTION REGISTRED !! ');
                 }
                 
                 makeDonation(arrayFood, arrayInstitution)
@@ -172,8 +181,6 @@ while(!interrupt) {
          }
      }
  }
-
-
 
 /*
 * Tenho que fazer o usuário escolher quantos kilos pretende doar.

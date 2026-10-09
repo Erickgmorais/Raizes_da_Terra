@@ -4,10 +4,12 @@ exports.showType = exports.typeCategory = void 0;
 const Colors_1 = require("./Colors");
 var typeCategory;
 (function (typeCategory) {
-    typeCategory[typeCategory["CITRUS_FRUITS"] = 0] = "CITRUS_FRUITS";
-    typeCategory[typeCategory["BERRIES"] = 1] = "BERRIES";
-    typeCategory[typeCategory["TROPICAL_FRUITS"] = 2] = "TROPICAL_FRUITS";
-    typeCategory[typeCategory["DRUPES"] = 3] = "DRUPES";
+    typeCategory[typeCategory["GRAINS"] = 0] = "GRAINS";
+    typeCategory[typeCategory["VEGETALES"] = 1] = "VEGETALES";
+    typeCategory[typeCategory["FRUITS"] = 2] = "FRUITS";
+    typeCategory[typeCategory["PULSES_OR_LEGUMES"] = 3] = "PULSES_OR_LEGUMES";
+    typeCategory[typeCategory["NUTS"] = 4] = "NUTS";
+    typeCategory[typeCategory["OTHERS"] = 5] = "OTHERS";
 })(typeCategory || (exports.typeCategory = typeCategory = {}));
 const showType = () => {
     (0, Colors_1.yellow)(` 
@@ -16,10 +18,12 @@ const showType = () => {
 ╠══════════════════════════════════════╣
 ║  Choose one type !                   ║
 ╠══════════════════════════════════════╣
-║  1 - Citrus Fruits                   ║
-║  2 - Berries                         ║
-║  3 - Tropical Fruits                 ║
-║  4 - Drupes                          ║
+║  1 - GRAINS                          ║
+║  2 - VEGETABLES                      ║
+║  3 - FRUITS                          ║
+║  4 - PULSE/LEGUMES                   ║
+║  5 - NUTS                            ║
+║  6 - OTHERS                          ║
 ╚══════════════════════════════════════╝`);
 };
 exports.showType = showType;

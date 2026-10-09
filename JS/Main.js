@@ -13,6 +13,7 @@ const arrayFood = [];
 const arrayInstitution = [];
 let createdProducer;
 let interrupt = false;
+const maxCharacters = 11;
 while (!interrupt) {
     try {
         (0, node_console_1.clear)();
@@ -36,9 +37,12 @@ while (!interrupt) {
             case '1':
                 (0, node_console_1.clear)();
                 const name = Auxiliares_1.ask.question('Insert name: ');
-                const identify = Auxiliares_1.ask.question('Insert your identify (document): ');
-                const quantityFood = Auxiliares_1.ask.question('Insert your quantity produced food: ');
-                createdProducer = new CreateProducer_1.CreateProducer(name, identify, quantityFood);
+                const identify = Auxiliares_1.ask.question('Insert your identify (11 characters): ');
+                if (identify.length < maxCharacters || identify.length > 11) {
+                    throw new Error(' !! INVALID CHARACTERS !!');
+                }
+                const quantityProduced = Auxiliares_1.ask.question('Insert your quantity produced food: ');
+                createdProducer = new CreateProducer_1.CreateProducer(name, identify, quantityProduced);
                 createdProducer.showProducer();
                 (0, Colors_1.white)('\nProducer insert sucessfully! ');
                 arrayProducer.push(createdProducer);
@@ -48,77 +52,29 @@ while (!interrupt) {
                 (0, node_console_1.clear)();
                 const nameFood = Auxiliares_1.ask.question('Enter the name of the food: ');
                 (0, Enum_1.showType)();
-                const categoryFood = Auxiliares_1.ask.question('Enter the category number: ');
-                switch (categoryFood) {
-                    case '1':
-                        const quantityKilos = Number(Auxiliares_1.ask.question('Enter the quantity kilos'));
-                        if (arrayProducer.length === 0) {
-                            throw new Error(' !! INVALID OPTION !!');
-                        }
-                        arrayProducer.forEach((e, i) => {
-                            (0, Colors_1.yellow)('\n' + (i + 1) + ' - ' + e.getName());
-                        });
-                        const chooseProducer = Number(Auxiliares_1.ask.question('Enter the producer number: '));
-                        if (chooseProducer < 0 || chooseProducer > arrayProducer.length) {
-                            throw new Error(' !! INVALID OPTION !!');
-                        }
-                        const createFood = new Food_1.Food(nameFood, Enum_1.typeCategory.CITRUS_FRUITS, quantityKilos, arrayProducer[chooseProducer]);
-                        (0, Colors_1.white)('\nFood insert sucessfully! ');
-                        arrayFood.push(createFood);
-                        (0, Auxiliares_1.stop)();
-                        break;
-                    case '2':
-                        const quantityKilos2 = Number(Auxiliares_1.ask.question('Enter the quantity kilos: '));
-                        if (arrayProducer.length === 0) {
-                            throw new Error(' !! INVALID OPTION !!');
-                        }
-                        arrayProducer.forEach((e, i) => {
-                            (0, Colors_1.yellow)('\n' + (i + 1) + ' - ' + e.getName());
-                        });
-                        const chooseProducer2 = Number(Auxiliares_1.ask.question('Enter the producer number: '));
-                        if (chooseProducer2 < 0 || chooseProducer2 > arrayProducer.length) {
-                            throw new Error(' !! INVALID OPTION !!');
-                        }
-                        const createFood2 = new Food_1.Food(nameFood, Enum_1.typeCategory.BERRIES, quantityKilos2, arrayProducer[chooseProducer2]);
-                        (0, Colors_1.white)('\nFood insert sucessfully! ');
-                        arrayFood.push(createFood2);
-                        (0, Auxiliares_1.stop)();
-                        break;
-                    case '3':
-                        const quantityKilos3 = Number(Auxiliares_1.ask.question('Enter the quantity kilos'));
-                        if (arrayProducer.length === 0) {
-                            throw new Error(' !! INVALID OPTION !!');
-                        }
-                        arrayProducer.forEach((e, i) => {
-                            (0, Colors_1.yellow)('\n' + (i + 1) + ' - ' + e.getName());
-                        });
-                        const chooseProducer3 = Number(Auxiliares_1.ask.question('Enter the producer number: '));
-                        if (chooseProducer3 < 0 || chooseProducer3 > arrayProducer.length) {
-                            throw new Error(' !! INVALID OPTION !!');
-                        }
-                        const createFood3 = new Food_1.Food(nameFood, Enum_1.typeCategory.TROPICAL_FRUITS, quantityKilos3, arrayProducer[chooseProducer3]);
-                        (0, Colors_1.white)('\nFood insert sucessfully! ');
-                        arrayFood.push(createFood3);
-                        (0, Auxiliares_1.stop)();
-                        break;
-                    case '4':
-                        const quantityKilos4 = Number(Auxiliares_1.ask.question('Enter the quantity kilos'));
-                        if (arrayProducer.length === 0) {
-                            throw new Error(' !! INVALID OPTION !!');
-                        }
-                        arrayProducer.forEach((e, i) => {
-                            (0, Colors_1.yellow)('\n' + (i + 1) + ' - ' + e.getName());
-                        });
-                        const chooseProducer4 = Number(Auxiliares_1.ask.question('Enter the producer number: '));
-                        if (chooseProducer4 < 0 || chooseProducer4 > arrayProducer.length) {
-                            throw new Error(' !! INVALID OPTION !!');
-                        }
-                        const createFood4 = new Food_1.Food(nameFood, Enum_1.typeCategory.DRUPES, quantityKilos4, arrayProducer[chooseProducer4]);
-                        (0, Colors_1.white)('\nFood insert sucessfully! ');
-                        arrayFood.push(createFood4);
-                        (0, Auxiliares_1.stop)();
-                        break;
+                const categoryFood = {
+                    '1': Enum_1.typeCategory.GRAINS,
+                    '2': Enum_1.typeCategory.VEGETALES,
+                    '3': Enum_1.typeCategory.FRUITS,
+                    '4': Enum_1.typeCategory.PULSES_OR_LEGUMES,
+                    '5': Enum_1.typeCategory.NUTS,
+                    '6': Enum_1.typeCategory.OTHERS
+                };
+                const optionCategory = Auxiliares_1.ask.question('Enter the category number: ');
+                if (categoryFood.length < 0 || categoryFood.length > 7) {
+                    throw new Error(' !! INVALID CATEGORY !!');
                 }
+                const quantityFood = Number(Auxiliares_1.ask.question('Enter the quantity kilos: '));
+                if (arrayProducer.length < 0) {
+                    throw new Error(' !! NO PRODUCER !!');
+                }
+                arrayProducer.forEach((e, i) => {
+                    (0, Colors_1.blue)('\n' + (i + 1) + ' - ' + e.showProducer());
+                });
+                const chooseProducer = Number(Auxiliares_1.ask.question('Choose an producer: '));
+                const foodCreated = new Food_1.Food(nameFood, categoryFood[optionCategory], quantityFood, arrayProducer[chooseProducer]);
+                arrayFood.push(foodCreated);
+                break;
             case '3':
                 (0, node_console_1.clear)();
                 const nameInstitution = Auxiliares_1.ask.question('Insert name Institution: ');
@@ -132,40 +88,37 @@ while (!interrupt) {
             case '4':
                 (0, node_console_1.clear)();
                 if (arrayProducer.length === 0) {
-                    throw new Error('No producers registered');
+                    throw new Error(' !! NO PRODUCER REGISTRED !! ');
                 }
                 arrayProducer.forEach((e, i) => {
-                    (0, Colors_1.yellow)(`\n${i + 1} -`);
-                    e.showProducer();
+                    (0, Colors_1.yellow)('\n' + (i + 1) + ' - ' + e.showProducer());
                 });
                 (0, Auxiliares_1.stop)();
                 break;
             case '5':
                 (0, node_console_1.clear)();
                 if (arrayFood.length === 0) {
-                    throw new Error('No food registered');
+                    throw new Error(' !! NO FOOD REGISTRED !! ');
                 }
                 arrayFood.forEach((e, i) => {
-                    (0, Colors_1.yellow)(`\n${i + 1} -`);
-                    e.showFood();
+                    (0, Colors_1.yellow)('\n' + (i + 1) + ' - ' + e.showFood());
                 });
                 (0, Auxiliares_1.stop)();
                 break;
             case '6':
                 (0, node_console_1.clear)();
                 if (arrayInstitution.length === 0) {
-                    throw new Error('No institutions registered');
+                    throw new Error(' !! NO INSTITUTION REGISTRED !! ');
                 }
                 arrayInstitution.forEach((e, i) => {
-                    (0, Colors_1.yellow)(`\n${i + 1} -`);
-                    e.showInstitution();
+                    (0, Colors_1.yellow)('\n' + (i + 1) + ' - ' + e.showInstitution());
                 });
                 (0, Auxiliares_1.stop)();
                 break;
             case '7':
                 (0, node_console_1.clear)();
                 if (arrayInstitution.length === 0) {
-                    throw new Error('No institutions registered');
+                    throw new Error(' !! NO INSTITUTION REGISTRED !! ');
                 }
                 (0, Donate_1.makeDonation)(arrayFood, arrayInstitution);
                 (0, Colors_1.white)('\nFood delivered successfully!');
