@@ -13,9 +13,9 @@ const arrayProducer: Producer[] = [];
 const arrayFood: Food[] = []
 const arrayInstitution: Institution[] = [];
 
-const producerTest: CreateProducer = new CreateProducer('Erick', '12345678901', 5);
+const producerTest: CreateProducer = new CreateProducer('Producer Test', '12345678901', 5);
 arrayProducer.push(producerTest)
-const foodTest: Food = new Food('arroz', typeCategory.GRAINS, 5, 2, arrayProducer[0]);
+const foodTest: Food = new Food('RICE', typeCategory.GRAINS, 5, 2, arrayProducer[0]);
 arrayFood.push(foodTest);
 const institutionTest: Institution = new Institution('Institution Test', 'Walter Rosa, 205', 5);
 arrayInstitution.push(institutionTest);
