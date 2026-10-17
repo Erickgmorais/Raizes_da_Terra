@@ -1,0 +1,5 @@
+Algumas coisas busquei na IA, como: 
+
+-Opção 2 na minha Main, a parte do RECORD
+-Verificação de iSNaN, caso usuário digite alguma letra ou símbolo 
+-Na classe Registry, pra entender o find 
