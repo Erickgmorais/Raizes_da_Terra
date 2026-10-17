@@ -60,6 +60,7 @@ node JS/Main.js
 
 O arquivo `tsconfig.json`, localizado na raiz do projeto, deve conter a
 seguinte configuração:
+``` npx tsc --init ```
 
 ``` json
 {
